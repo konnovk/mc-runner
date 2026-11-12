@@ -1,2 +1,4 @@
-server/
+servers/
 backup/
+frpc/
+frp/
