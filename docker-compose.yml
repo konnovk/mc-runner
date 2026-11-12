@@ -1,0 +1,31 @@
+services:
+  frpc:
+    image: frps:dev
+    restart: always
+    network_mode: host
+    volumes:
+      - ./frpc:/opt/frp
+    command: -c /opt/frp/frpc.ini
+  velocity:
+    image: mc-runner:dev
+    volumes:
+      - ./servers/velocity:/mc
+    ports:
+      - 25565:25565
+    stdin_open: true
+    tty: true
+    restart: always
+  default:
+    image: mc-runner:dev
+    volumes:
+      - ./servers/default:/mc
+    stdin_open: true
+    tty: true
+    restart: always
+  stage:
+    image: mc-runner:dev
+    volumes:
+      - ./servers/stage:/mc
+    stdin_open: true
+    tty: true
+    restart: always
